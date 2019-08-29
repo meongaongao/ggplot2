@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Chương 2: Biểu đồ điểm (scatter plot) | _main.utf8.md</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.12.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Chương 2: Biểu đồ điểm (scatter plot) | _main.utf8.md" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Chương 2: Biểu đồ điểm (scatter plot) | _main.utf8.md" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chuong-1-gii-thiu-goi-ggplot2.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Chương 0: Giới thiệu</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#tai-liu-nen-oc"><i class="fa fa-check"></i><b>1.1</b> Tài liệu nên đọc</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#tai-sao-minh-vit-nhng-bai-nay"><i class="fa fa-check"></i><b>1.2</b> Tại sao mình viết những bài này?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#nhng-bai-vit-nay-danh-cho-ai"><i class="fa fa-check"></i><b>1.3</b> Những bài viết này dành cho ai?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#cac-bai-vit-cua-minh-co-sau-khong"><i class="fa fa-check"></i><b>1.4</b> Các bài viết của mình có “sâu” không ?</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#minh-rt-bit-on-cac-gop-y-cua-ban"><i class="fa fa-check"></i><b>1.5</b> Mình rất biết ơn các góp ý của bạn</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#meo-ngao-la-ai"><i class="fa fa-check"></i><b>1.6</b> Mèo Ngao là ai?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chuong-1-gii-thiu-goi-ggplot2.html"><a href="chuong-1-gii-thiu-goi-ggplot2.html"><i class="fa fa-check"></i><b>2</b> Chương 1: Giới thiệu gói ggplot2</a><ul>
+<li class="chapter" data-level="2.1" data-path="chuong-1-gii-thiu-goi-ggplot2.html"><a href="chuong-1-gii-thiu-goi-ggplot2.html#cai-t-va-goi-ggplot2"><i class="fa fa-check"></i><b>2.1</b> Cài đặt và gọi <code>ggplot2</code></a></li>
+<li class="chapter" data-level="2.2" data-path="chuong-1-gii-thiu-goi-ggplot2.html"><a href="chuong-1-gii-thiu-goi-ggplot2.html#phong-cach-ggplot2"><i class="fa fa-check"></i><b>2.2</b> Phong cách <code>ggplot2</code></a></li>
+<li class="chapter" data-level="2.3" data-path="chuong-1-gii-thiu-goi-ggplot2.html"><a href="chuong-1-gii-thiu-goi-ggplot2.html#cac-dataset-co-sn-trong-r"><i class="fa fa-check"></i><b>2.3</b> Các dataset có sẵn trong R</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chuong-2-biu-im-scatter-plot.html"><a href="chuong-2-biu-im-scatter-plot.html"><i class="fa fa-check"></i><b>3</b> Chương 2: Biểu đồ điểm (scatter plot)</a><ul>
+<li class="chapter" data-level="3.1" data-path="chuong-2-biu-im-scatter-plot.html"><a href="chuong-2-biu-im-scatter-plot.html#d-liu-dung--ve-biu-"><i class="fa fa-check"></i><b>3.1</b> Dữ liệu dùng để vẽ biểu đồ</a></li>
+<li class="chapter" data-level="3.2" data-path="chuong-2-biu-im-scatter-plot.html"><a href="chuong-2-biu-im-scatter-plot.html#ve-mt-biu--on-gian"><i class="fa fa-check"></i><b>3.2</b> Vẽ một biểu đồ đơn giản</a></li>
+<li class="chapter" data-level="3.3" data-path="chuong-2-biu-im-scatter-plot.html"><a href="chuong-2-biu-im-scatter-plot.html#thay-i-hinh-dang-im"><i class="fa fa-check"></i><b>3.3</b> Thay đổi hình dạng điểm</a></li>
+<li class="chapter" data-level="3.4" data-path="chuong-2-biu-im-scatter-plot.html"><a href="chuong-2-biu-im-scatter-plot.html#thay-i-mau-sc-im"><i class="fa fa-check"></i><b>3.4</b> Thay đổi màu sắc điểm</a></li>
+<li class="chapter" data-level="3.5" data-path="chuong-2-biu-im-scatter-plot.html"><a href="chuong-2-biu-im-scatter-plot.html#thay-i-kich-thuc-im"><i class="fa fa-check"></i><b>3.5</b> Thay đổi kích thước điểm</a></li>
+<li class="chapter" data-level="3.6" data-path="chuong-2-biu-im-scatter-plot.html"><a href="chuong-2-biu-im-scatter-plot.html#phan-nhom-im"><i class="fa fa-check"></i><b>3.6</b> Phân nhóm điểm</a></li>
+<li class="chapter" data-level="3.7" data-path="chuong-2-biu-im-scatter-plot.html"><a href="chuong-2-biu-im-scatter-plot.html#iu-chinh--xuyen-thu-opacity"><i class="fa fa-check"></i><b>3.7</b> Điều chỉnh độ xuyên thấu (opacity)</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chuong-2-biu--im-scatter-plot" class="section level1">
+<h1><span class="header-section-number">3</span> Chương 2: Biểu đồ điểm (scatter plot)</h1>
+<div id="d-liu-dung--ve-biu-" class="section level2">
+<h2><span class="header-section-number">3.1</span> Dữ liệu dùng để vẽ biểu đồ</h2>
+<p>File <code>tips.csv</code> tại link: <a href="https://raw.githubusercontent.com/meongaongao/data/master/tips.csv" class="uri">https://raw.githubusercontent.com/meongaongao/data/master/tips.csv</a></p>
+<p>Dữ liệu trong file <code>tips.csv</code> có dạng bảng (data frame) gồm 244 dòng và 7 cột:</p>
+<ul>
+<li><code>total_bill</code>: tổng số tiền trên hoá đơn</li>
+<li><code>tip</code>: số tiền tip cho nhân viên phục vụ</li>
+<li><code>sex</code>: giới tính</li>
+<li><code>smoker</code>: người thanh toán hoá đơn có hút thuốc hay không</li>
+<li><code>day</code>: ngày trong tuần (thứ hai, thứ 3,…)</li>
+<li><code>time</code>: thời gian trong ngày (“Diiner”, “Lunch”,…)</li>
+<li><code>size</code>: số lượng khách của một hoá đơn</li>
+</ul>
+<p>Tạo ra <code>data frame</code> có tên là <code>tips</code></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">tips &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/meongaongao/data/master/tips.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">head</span>(tips, <span class="dv">10</span>)</a></code></pre></div>
+<pre><code>##    total_bill  tip    sex smoker day   time size
+## 1       16.99 1.01 Female     No Sun Dinner    2
+## 2       10.34 1.66   Male     No Sun Dinner    3
+## 3       21.01 3.50   Male     No Sun Dinner    3
+## 4       23.68 3.31   Male     No Sun Dinner    2
+## 5       24.59 3.61 Female     No Sun Dinner    4
+## 6       25.29 4.71   Male     No Sun Dinner    4
+## 7        8.77 2.00   Male     No Sun Dinner    2
+## 8       26.88 3.12   Male     No Sun Dinner    4
+## 9       15.04 1.96   Male     No Sun Dinner    2
+## 10      14.78 3.23   Male     No Sun Dinner    2</code></pre>
+</div>
+<div id="ve-mt-biu--on-gian" class="section level2">
+<h2><span class="header-section-number">3.2</span> Vẽ một biểu đồ đơn giản</h2>
+<p>Lớp <code>geom_point()</code> dùng để vẽ biểu đồ điểm (như tên của nó).</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">ggplot</span>(tips, <span class="kw">aes</span>(<span class="dt">x =</span> total_bill, <span class="dt">y =</span> tip)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="thay-i-hinh-dang-im" class="section level2">
+<h2><span class="header-section-number">3.3</span> Thay đổi hình dạng điểm</h2>
+<p>Tham số: <code>shape =</code>. Tham số tác động lên điểm được đặt trong lớp <code>geom_point()</code>. R cung cấp 25 hình dạng được đánh số từ 1-25 và một số ký hiệu khác.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">ggplot</span>(tips, <span class="kw">aes</span>(<span class="dt">x =</span> total_bill, <span class="dt">y =</span> tip)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="thay-i-mau-sc-im" class="section level2">
+<h2><span class="header-section-number">3.4</span> Thay đổi màu sắc điểm</h2>
+<p>Tham số: <code>colour =</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">ggplot</span>(tips, <span class="kw">aes</span>(<span class="dt">x =</span> total_bill, <span class="dt">y =</span> tip)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Chương màu sắc sẽ được tách riêng vì có rất nhiều cách và các gói hỗ trợ.</p>
+</div>
+<div id="thay-i-kich-thuc-im" class="section level2">
+<h2><span class="header-section-number">3.5</span> Thay đổi kích thước điểm</h2>
+<p>Tham số: <code>size =</code>. Size mặc định là 2</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">ggplot</span>(tips, <span class="kw">aes</span>(<span class="dt">x =</span> total_bill, <span class="dt">y =</span> tip)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">10</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="phan-nhom-im" class="section level2">
+<h2><span class="header-section-number">3.6</span> Phân nhóm điểm</h2>
+<p>Phân nhóm bằng <strong>hình thức</strong> nào và <strong>theo cái gì</strong>. Ví dụ phân nhóm bằng <strong>màu sắc</strong> dựa trên <strong>giới tính</strong>.</p>
+<p>Lưu ý, khi tham số nhận giá trị là một cột của data frame, tham số phải được đặt trong <code>aes()</code>. Ví dụ bên dưới <code>geom_point(aes(colour = sex))</code>. Nếu bạn chỉ viết <code>geom_point(colour = sex)</code> thì R sẽ không hiểu và báo lỗi.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">ggplot</span>(tips, <span class="kw">aes</span>(<span class="dt">x =</span> total_bill, <span class="dt">y =</span> tip)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">colour =</span> sex))</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="iu-chinh--xuyen-thu-opacity" class="section level2">
+<h2><span class="header-section-number">3.7</span> Điều chỉnh độ xuyên thấu (opacity)</h2>
+<p>Tham số: <code>alpha =</code>, dùng khi có quá nhiều điểm chồng lên nhau và mình quan tâm đến mật độ điểm trên đồ thị.</p>
+<p>Alpha có giá trị từ 0-1.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">ggplot</span>(tips, <span class="kw">aes</span>(<span class="dt">x =</span> total_bill, <span class="dt">y =</span> tip)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chuong-1-gii-thiu-goi-ggplot2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
